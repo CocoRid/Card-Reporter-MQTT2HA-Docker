@@ -1,18 +1,19 @@
 # RPi Reporter MQTT2HA Daemon
 
-![Project Maintenance][maintenance-shield]
-
-[![GitHub Activity][commits-shield]][commits]
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 [![GitHub Release][releases-shield]][releases]
 
-A simple Linux python script to query the Raspberry Pi on which it is running for various configuration and status values which it then reports via via [MQTT](https://projects.eclipse.org/projects/iot.mosquitto) to your [Home Assistant](https://www.home-assistant.io/) installation. This allows you to install and run this on each of your RPi's so you can track them all via your own Home Assistant Dashboard.
+## This is forked from this repository https://github.com/ironsheep/RPi-Reporter-MQTT2HA-Daemon ##
+
+A simple Linux python script to query the Raspberry Pi or Odroid ("card") on which it is running for various configuration and status values which it then reports via via [MQTT](https://projects.eclipse.org/projects/iot.mosquitto) to your [Home Assistant](https://www.home-assistant.io/) installation. This allows you to install and run this on each of your card's (tested on RPI5 or Odroid M1S) so you can track them all via your own Home Assistant Dashboard.
 
 ![Discovery image](./Docs/images/DiscoveryV4.png)
 
-This script should be configured to be run in **daemon mode** continuously in the background as a systemd service (or optionally as a SysV init script). Instructions are provided below.
+This script can be configured to be run in **daemon mode** continuously in the background as a systemd service (or optionally as a SysV init script). Instructions are provided below.
+
+This script can also be configured to be run in a **docker** container to be run continuously with is own environment. DockerFile and docker-compose can be found in folder "Docker" repository. Instructions will be provided later (new from this fork).
 
 ## Table of Contents
 
@@ -213,10 +214,6 @@ sudo pip3 install -r requirements.txt
 - **isp-rpi-reporter.service** - Systemd Daemon / Service description file
 
 ... need to have any mention of `/opt/RPi-Reporter-MQTT2HA-Daemon` changed to your install location **before you can run this script as a service.**
-
-#### Why are we checking-out the latest release?
-
-When I'm developing new features I'll work on a different branch thereby not affecting master. When they are tested I'll merge the development brach into master. However it is much easier to merge pull requests directly into master. This action will, for a short period of time, make the **master branch have possibly non-working code**!  You don't want this version until I've completed my testing of the new version and marked it as a new release. The clone gets you all versions while the checkout command moves your installation to the released version so you are running the latest fully tested code.  You can always check the [releases page](https://github.com/ironsheep/RPi-Reporter-MQTT2HA-Daemon/releases) to find out which is the latest. This also tells you what changes appeared in each release.
 
 ## Configuration
 
@@ -567,15 +564,9 @@ Alternatively you can create a simple script which you can run any time you want
 
 ---
 
-> If you like my work and/or this has helped you in some way then feel free to help me out for a couple of :coffee:'s or :pizza: slices!
->
-> [![coffee](https://www.buymeacoffee.com/assets/img/custom_images/black_img.png)](https://www.buymeacoffee.com/ironsheep) &nbsp;&nbsp; -OR- &nbsp;&nbsp; [![Patreon](./Docs/images/patreon.png)](https://www.patreon.com/IronSheep?fan_landing=true)[Patreon.com/IronSheep](https://www.patreon.com/IronSheep?fan_landing=true)
-
----
-
 ## Contributors
 
-This project is enjoyed by users in many countries. A number of these users have taken the time so submit **pull requests** which contribute changes/fixes to this project.
+This project is enjoyed by users in many countries. A number of these users have taken the time to submit **pull requests** which contribute changes/fixes to this project.
 
 Thank you to the following github users for taking the time to help make this project function better for all of us!:
 
@@ -612,8 +603,6 @@ Thanks to [synoniem](https://github.com/synoniem) for working through the issues
 
 ### [Copyright](copyright) | [License](LICENSE)
 
-[commits-shield]: https://img.shields.io/github/commit-activity/y/ironsheep/RPi-Reporter-MQTT2HA-Daemon.svg?style=for-the-badge
-[commits]: https://github.com/ironsheep/RPi-Reporter-MQTT2HA-Daemon/commits/master
-[maintenance-shield]: https://img.shields.io/badge/maintainer-stephen%40ironsheep.biz-blue.svg?style=for-the-badge
-[releases-shield]: https://img.shields.io/github/release/ironsheep/RPi-Reporter-MQTT2HA-Daemon.svg?style=for-the-badge
-[releases]: https://github.com/ironsheep/RPi-Reporter-MQTT2HA-Daemon/releases
+[commits]: https://github.com/CocoRid/Card-Reporter-MQTT2HA-Docker/commits/master
+[releases-shield]: https://img.shields.io/github/v/release/CocoRid/Card-Reporter-MQTT2HA-Docker?style=for-the-badge
+[releases]: https://github.com/CocoRid/Card-Reporter-MQTT2HA-Docker/releases
